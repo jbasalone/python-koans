@@ -35,7 +35,33 @@ from runner.koan import *
 
 def score(dice):
     # You need to write this method
-    pass
+    dice = sorted(dice)
+    # create a list of number and count
+    number_count = [[num, dice.count(num)] for num in set(dice)]
+    score = 0
+    for group in number_count:
+        print 'Im doing %d and %d' %(group[0], group[1])
+        if group[1] >= 4:
+            if group[0] == 1:
+                score += 1000
+                multiplier = group[1] - 3
+                score += (100 * multiplier)
+            elif group[0] == 5:
+                score += (group[0] * 100)
+                multiplier = group[1] - 3
+                score += (50 * multiplier)
+            else:
+                score += (group[0] * 100)
+        elif group[1] == 3:
+            if group[0] == 1:
+                score += 1000
+            else:
+                score += (100 * group[0])
+        elif group[0] == 1:
+            score += (100 * group[1])
+        elif group[0] == 5:
+            score += (50 * group[1])
+    return score
 
 
 class AboutScoringProject(Koan):

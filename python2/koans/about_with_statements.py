@@ -11,7 +11,7 @@ import re  # For regular expression string comparisons
 
 
 class AboutWithStatements(Koan):
-    def count_lines(self, file_name):
+    def count_lines(file_name):
         try:
             f = open(file_name)
             try:
@@ -23,7 +23,7 @@ class AboutWithStatements(Koan):
             self.fail()
 
     def test_counting_lines(self):
-        self.assertEqual(__, self.count_lines("example_file.txt"))
+        self.assertEqual(4, self.count_lines("example_file.txt"))
 
     # ------------------------------------------------------------------
 
